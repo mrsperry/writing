@@ -13,7 +13,9 @@ class Main {
 class Story {
     constructor(lines) {
         this.lines = lines;
-        this.parent = $("input")
+        this.input = $("input")
+            .trigger("focus")
+            .on("blur", () => this.input.trigger("focus"))
             .on("beforeinput", (event) => {
             if (!this.preprocess(event)) {
                 event.preventDefault();
@@ -30,24 +32,35 @@ class Story {
         new Story(lines);
     }
     preprocess(event) {
-        const index = this.parent.val()?.toString().length ?? 0;
+        if (this.locked) {
+            return false;
+        }
+        const index = this.input.val()?.toString().length ?? 0;
         return this.lines[this.index][index] === event.originalEvent.data;
     }
     process() {
-        if (this.locked) {
-            this.parent.val("");
-        }
-        if (this.parent.val() === this.lines[this.index].toString()) {
+        if (this.input.val() === this.lines[this.index].toString()) {
             this.updateHistory();
             this.index++;
-            this.updateLineCount();
             this.locked = true;
+            this.updateLineCount();
             if (this.index === this.lines.length) {
-                this.parent.off();
+                this.input.off();
                 return;
             }
             this.lineComplete();
         }
+    }
+    lineComplete() {
+        const placeholder = $(".placeholder").fadeOut(200, () => {
+            this.updatePlaceholder();
+            placeholder.fadeIn(200);
+        });
+        this.input.fadeOut(200, () => {
+            this.input.val("");
+            this.input.fadeIn(200);
+            this.locked = false;
+        });
     }
     updateHistory() {
         const line = this.lines[this.index];
@@ -65,17 +78,6 @@ class Story {
                 element.hide().fadeIn();
             }
         }
-    }
-    lineComplete() {
-        const placeholder = $(".placeholder").fadeOut(200, () => {
-            this.updatePlaceholder();
-            placeholder.fadeIn(200);
-        });
-        this.parent.fadeOut(200, () => {
-            this.parent.val("");
-            this.parent.fadeIn(200);
-            this.locked = false;
-        });
     }
     updatePlaceholder() {
         $(".placeholder").text(this.lines[this.index]);

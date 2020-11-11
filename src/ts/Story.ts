@@ -19,6 +19,10 @@ class Story {
     private constructor(private lines: string[]) {
         // Get the main input element
         this.input = $("input")
+            // Focus the input
+            .trigger("focus")
+            // Ensure the focus can't be lost
+            .on("blur", (): any => this.input.trigger("focus"))
             // Check if a key should be processed
             .on("beforeinput", (event: any): void => {
                 if (!this.preprocess(event)) {
