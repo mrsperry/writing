@@ -92,6 +92,13 @@ class Story {
         $(".placeholder").text(this.lines[this.index]);
     }
     updateLineCount() {
-        $(".line-count").text(this.lines.length - this.index);
+        const remaining = this.lines.length - this.index;
+        $(".line-count").text(remaining);
+        if (remaining === 1) {
+            $(".tooltip").text("There is 1 line left.");
+        }
+        else {
+            $(".tooltip").text("There are " + remaining + " lines left.");
+        }
     }
 }

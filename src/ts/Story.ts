@@ -103,7 +103,7 @@ class Story {
     /** Shakes the input element back and forth */
     private shakeInput(): void {
         const parent: any = $(".main-input");
-        
+
         // Check if the parent is already shaking
         if (parent.hasClass("shake")) {
             return;
@@ -145,6 +145,14 @@ class Story {
 
     /** Sets the number of lines left in the story */
     private updateLineCount(): void {
-        $(".line-count").text(this.lines.length - this.index);
+        const remaining: number = this.lines.length - this.index;
+
+        $(".line-count").text(remaining);
+
+        if (remaining === 1) {
+            $(".tooltip").text("There is 1 line left.");
+        } else {
+            $(".tooltip").text("There are " + remaining + " lines left.");
+        }
     }
 }

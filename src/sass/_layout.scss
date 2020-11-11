@@ -88,12 +88,43 @@ input {
         }
     }
 
-    .line-count {
+    .line-counter {
         @include base.flex();
+        position: relative;
         box-shadow: 0rem 0rem 1rem variables.$content-shadow-color;
         border-radius: 50%;
         width: 3rem;
         height: 3rem;
         margin-left: 1rem;
+
+        &:hover .tooltip {
+            opacity: 1;
+        }
+
+        .tooltip {
+            position: absolute;
+            color: variables.$content-color;
+            text-align: center;
+            background-color: variables.$tooltip-bg;
+            transition: opacity 250ms ease-in-out;
+            opacity: 0;
+            border-radius: 0.5rem;
+            width: 200%;
+            bottom: -125%;
+            padding: 0.5rem;
+
+            &::after {
+                position: absolute;
+                content: "";
+                width: 0px;
+                height: 0px;
+                top: -10px;
+                left: calc(50% - 5px);
+                border-left: 5px solid transparent;
+                border-top: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-bottom: 5px solid variables.$tooltip-bg;
+            }
+        }
     }
 }
