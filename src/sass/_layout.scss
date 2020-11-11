@@ -14,7 +14,7 @@
 
 body {
     @include base.flex();
-    background-color: #ffe7ff;
+    background-color: variables.$bg-color;
     background-image: url("../assets/images/asphalt.png");
     min-width: 100vw;
     min-height: 100vh;
@@ -49,8 +49,8 @@ ol {
 input {
     display: block;
     font-size: 1.5rem;
-    background-color: variables.$bg-color;
-    color: rgba(34, 34, 34, 0.6);
+    background-color: variables.$content-color;
+    color: variables.$text-color;
     width: 100%;
     z-index: 50;
     outline: none;
@@ -61,8 +61,8 @@ input {
 .main-input {
     @include base.flex();
     position: relative;
-    background-color: variables.$bg-color;
-    box-shadow: 0.2rem 0.2rem 1rem variables.$shadow-color;
+    background-color: variables.$content-color;
+    box-shadow: 0.2rem 0.2rem 1rem variables.$bg-shadow-color;
     border-radius: 2rem;
     width: 75%;
     height: 2rem;
@@ -79,7 +79,7 @@ input {
             -moz-user-select: none;
             -webkit-user-select: none;
             font-size: 1.5rem;
-            color: rgba(34, 34, 34, 0.4);
+            color: variables.$text-transparent-color;
             top: 0px;
             left: 0px;
             bottom: 0px;
@@ -89,7 +89,7 @@ input {
 
     .line-count {
         @include base.flex();
-        box-shadow: 0rem 0rem 1rem variables.$shadow-color;
+        box-shadow: 0rem 0rem 1rem variables.$content-shadow-color;
         border-radius: 50%;
         width: 3rem;
         height: 3rem;
