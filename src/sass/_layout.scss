@@ -2,12 +2,12 @@
 @use "variables";
 
 @font-face {
-    font-family: "Testing";
+    font-family: "Bellefair";
     src: url("../assets/fonts/Bellefair-Regular.otf")
 }
 
 :root, input {
-    font-family: "Testing";
+    font-family: "Bellefair", serif;
     font-size: 16px;
     color: variables.$text-color;
 }
@@ -71,6 +71,7 @@ input {
     .input-holder {
         position: relative;
         width: 100%;
+        margin-left: 0.5rem;
 
         .placeholder {
             position: absolute;
