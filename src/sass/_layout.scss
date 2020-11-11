@@ -1,0 +1,98 @@
+@use "base";
+@use "variables";
+
+@font-face {
+    font-family: "Testing";
+    src: url("../assets/fonts/Bellefair-Regular.otf")
+}
+
+:root, input {
+    font-family: "Testing";
+    font-size: 16px;
+    color: variables.$text-color;
+}
+
+body {
+    @include base.flex();
+    background-color: #ffe7ff;
+    background-image: url("../assets/images/asphalt.png");
+    min-width: 100vw;
+    min-height: 100vh;
+    margin: 0rem;
+}
+
+main {
+    min-width: 1024px;
+}
+
+section {
+    @include base.flex(column);
+    position: relative;
+}
+
+ol {
+    @include base.flex(column, flex-end, flex-start);
+    position: absolute;
+    top: -475px;
+    width: 75%;
+    height: 450px;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+
+    li {
+        font-size: 1.5rem;
+        height: 30px;
+    }
+}
+
+input {
+    display: block;
+    font-size: 1.5rem;
+    background-color: variables.$bg-color;
+    color: rgba(34, 34, 34, 0.6);
+    width: 100%;
+    z-index: 50;
+    outline: none;
+    padding: 0px;
+    border: none;
+}
+
+.main-input {
+    @include base.flex();
+    position: relative;
+    background-color: variables.$bg-color;
+    box-shadow: 0.2rem 0.2rem 1rem variables.$shadow-color;
+    border-radius: 2rem;
+    width: 75%;
+    height: 2rem;
+    padding: 1rem;
+
+    .input-holder {
+        position: relative;
+        width: 100%;
+
+        .placeholder {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            font-size: 1.5rem;
+            color: rgba(34, 34, 34, 0.4);
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            right: 0px;
+        }
+    }
+
+    .line-count {
+        @include base.flex();
+        box-shadow: 0rem 0rem 1rem variables.$shadow-color;
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem;
+        margin-left: 1rem;
+    }
+}
