@@ -1,8 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <title>Writing - Joshua Sperry</title>
+        <!-- Meta -->
+        <meta name="charset" content="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Joshua Sperry">
+        <meta name="description" content="A story writing simulator">
+        <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="src/output/main.css">
+        <!-- jQuery -->
         <script src="libraries/jquery-3.4.1.min.js"></script>
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130264842-4"></script>
+        <script>
+            if (document.location.hostname.search("mrsperry.github.io") !== -1) {
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                gtag("js", new Date());
+
+                gtag("config", "UA-130264842-6");
+            }
+        </script>
     </head>
     <body>
         <main>
@@ -13,7 +32,7 @@
                         <input type="text">
                         <span class="placeholder"></span>
                     </div>
-                    <span class="line-count">999</span>
+                    <span class="line-count"></span>
                 </div>
             </section>
         </main>
