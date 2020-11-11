@@ -27,6 +27,7 @@ class Story {
             .on("beforeinput", (event: any): void => {
                 if (!this.preprocess(event)) {
                     event.preventDefault();
+                    this.shakeInput();
                 }
             })
             // Process key clicks
@@ -97,6 +98,19 @@ class Story {
 
             this.locked = false;
         });
+    }
+
+    /** Shakes the input element back and forth */
+    private shakeInput(): void {
+        const parent: any = $(".main-input");
+        
+        // Check if the parent is already shaking
+        if (parent.hasClass("shake")) {
+            return;
+        }
+
+        parent.addClass("shake")
+            .on("animationend", (): any => parent.removeClass("shake"));
     }
 
     /** Updates the history list */

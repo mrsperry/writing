@@ -19,6 +19,7 @@ class Story {
             .on("beforeinput", (event) => {
             if (!this.preprocess(event)) {
                 event.preventDefault();
+                this.shakeInput();
             }
         })
             .on("keyup", () => this.process());
@@ -61,6 +62,14 @@ class Story {
             this.input.fadeIn(200);
             this.locked = false;
         });
+    }
+    shakeInput() {
+        const parent = $(".main-input");
+        if (parent.hasClass("shake")) {
+            return;
+        }
+        parent.addClass("shake")
+            .on("animationend", () => parent.removeClass("shake"));
     }
     updateHistory() {
         const line = this.lines[this.index];
